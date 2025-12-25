@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Image Similarity Search - Refined Dark Theme */
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 220 15% 90%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 220 15% 90%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 220 15% 90%;
+
+    --primary: 200 80% 55%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 15% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 200 70% 50%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 220 15% 95%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 200 60% 50%;
+
+    --radius: 0.5rem;
+
+    /* Subtle custom tokens */
+    --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.2);
+    --shadow-elevated: 0 4px 16px hsl(0 0% 0% / 0.25);
+
+    --sidebar-background: 220 20% 7%;
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 200 80% 55%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 200 60% 50%;
+  }
+
+  .dark {
+    --background: 220 20% 7%;
+    --foreground: 220 15% 90%;
+    --card: 220 18% 10%;
+    --card-foreground: 220 15% 90%;
+    --popover: 220 18% 10%;
+    --popover-foreground: 220 15% 90%;
+    --primary: 200 80% 55%;
+    --primary-foreground: 220 20% 7%;
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 15% 85%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 200 70% 50%;
+    --accent-foreground: 220 20% 7%;
+    --destructive: 0 60% 40%;
+    --destructive-foreground: 220 15% 95%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 200 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .upload-zone {
+    @apply relative border-2 border-dashed border-border rounded-lg p-6 transition-colors duration-200;
+    background: hsl(var(--card));
+  }
+
+  .upload-zone:hover,
+  .upload-zone.dragging {
+    @apply border-primary/50 bg-primary/5;
+  }
+
+  .skeleton-pulse {
+    @apply animate-pulse bg-muted rounded-lg;
+  }
+
+  .image-grid-item {
+    @apply relative overflow-hidden rounded-lg bg-card border border-border cursor-pointer transition-all duration-200;
+  }
+
+  .image-grid-item img {
+    @apply w-full h-full object-cover transition-transform duration-300;
+  }
+
+  .image-grid-item:hover {
+    @apply border-primary/30;
+  }
+
+  .image-grid-item:hover img {
+    transform: scale(1.02);
+  }
+
+  .image-grid-item::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 transition-opacity duration-200;
+  }
+
+  .image-grid-item:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
